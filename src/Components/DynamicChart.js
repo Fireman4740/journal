@@ -1,61 +1,89 @@
-import React, { useState, useEffect } from 'react'
-import {Bar} from 'react-chartjs-2'
+import React from "react";
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import faker from "faker";
+ChartJS.register(
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+);
 
-const DynamicChart = () => {
-       const [chartData, setChartData]  = useState({});    
-       const [employeeSalary, setEmployeeSalary] = useState([]);    
-       const [employeeAge, setEmployeeAge] = useState([]);
-const Chart = () => {
-       setChartData({
-       labels: ['22/03', '23/03', '24/03', '25/03', '26/03', '27/03'],
-       datasets: [{
-                         label: '# of Votes',
-                         data: [1,2,3,4,5,6,7,8,9,10],
-                         backgroundColor: [
-                             'rgba(255, 99, 132, 0.2)',
-                             'rgba(54, 162, 235, 0.2)',
-                             'rgba(255, 206, 86, 0.2)',
-                             'rgba(75, 192, 192, 0.2)',
-                             'rgba(153, 102, 255, 0.2)',
-                             'rgba(255, 159, 64, 0.2)'
-                         ],
-                         borderColor: [
-                             'rgba(255, 99, 132, 1)',
-                             'rgba(54, 162, 235, 1)',
-                             'rgba(255, 206, 86, 1)',
-                             'rgba(75, 192, 192, 1)',
-                             'rgba(153, 102, 255, 1)',
-                             'rgba(255, 159, 64, 1)'
-                         ],
-                         borderWidth: 1
-                     }]
-              });
+export const options = {
+	plugins: {
+		title: {
+			display: true,
+			text: "Chart.js Bar Chart - Stacked",
+		},
+	},
+	responsive: true,
+	interaction: {
+		mode: "index",
+		intersect: false,
+	},
+	scales: {
+		x: {
+			stacked: true,
+		},
+		y: {
+			stacked: true,
+		},
+	},
+};
+const labels = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+];
+export const data = {
+	labels,
+	datasets: [
+		{
+			label: "Dataset 1",
+			data: labels.map(() =>
+				faker.datatype.number({ min: -1000, max: 1000 }),
+			),
+			backgroundColor: "rgb(255, 99, 132)",
+			stack: "Stack 0",
+		},
+		{
+			label: "Dataset 2",
+			data: labels.map(() =>
+				faker.datatype.number({ min: -1000, max: 1000 }),
+			),
+			backgroundColor: "rgb(75, 192, 192)",
+			stack: "Stack 0",
+		},
+		{
+			label: "Dataset 3",
+			data: labels.map(() =>
+				faker.datatype.number({ min: -1000, max: 1000 }),
+			),
+			backgroundColor: "rgb(53, 162, 235)",
+			stack: "Stack 1",
+		},
+	],
+};
+
+export function DynamicChart() {
+	return (
+		<div>
+			<Bar options={options} data={data} />;
+		</div>
+	);
 }
-     useEffect(() => {
-        Chart();
-      }, []);
-
-return(
-          <div className="Chart">
-              <h1>Bar Chart</h1>
-              <div>
-                  <Bar
-                    data={chartData}
-                    options={{
-                        responsive:true,
-                        title: { text: "THICCNESS SCALE", display: true },
-                        scales:{
-                            yAxes:[ {
-                                ticks:{
-                                    beginAtZero: true
-                                }
-                            }
-                            ]
-                        }
-                    }}
-                  />
-              </div>
-          </div>
-      )
- }
 export default DynamicChart;
