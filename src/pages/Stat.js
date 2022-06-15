@@ -1,8 +1,15 @@
 import React from "react";
 import Chart from "../Components/DynamicChart";
+import {getdataFromBinnace as getdata} from "../tools/getData";
 
 const Home = () => {
-
+	let ordre ;
+	// const data = getdataFromBinnace(ordre);
+	async function afficher() {
+		const data = await getdata();
+		console.log(data);
+	}
+	// console.log(data +"data");
 	return (
 		<div>
 			<header className="bg-white shadow">
@@ -15,7 +22,9 @@ const Home = () => {
 			<main>
 				<div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 					<Chart/>
+
 				</div>
+				<button className="btn btn-primary" onClick={afficher()}> api</button>
 			</main>
 		</div>
 	);
