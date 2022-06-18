@@ -1,12 +1,12 @@
 import React from "react";
 import Chart from "../Components/DynamicChart";
-import {getdataFromBinnace as getdata} from "../tools/getData";
+import {gethistory} from "../tools/getData";
 
 const Home = () => {
 	let ordre ;
 	// const data = getdataFromBinnace(ordre);
-	async function afficher() {
-		const data = await getdata();
+	const afficher = () => {
+		const data = gethistory("BTCUSDT","REALIZED_PNL");
 		console.log(data);
 	}
 	// console.log(data +"data");
