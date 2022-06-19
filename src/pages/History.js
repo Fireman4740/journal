@@ -1,5 +1,6 @@
 import React from "react";
 import HistoricItem from "../Components/HistoricItem";
+import DataHistory from "../tools/dataHistory";
 
 export function History() {
 	return (
@@ -13,7 +14,7 @@ export function History() {
 					</div>
 				</header>
 				<main>
-          <div className="max-w-5xl mx-auto py-4 sm:px-10 lg:px-5">
+          {/* <div className="max-w-5xl mx-auto py-4 sm:px-10 lg:px-5">
 					<HistoricItem></HistoricItem>
           </div>
           <div className="max-w-5xl mx-auto sm:px-10 lg:px-5">
@@ -21,7 +22,9 @@ export function History() {
           </div>
           <div className="max-w-5xl mx-auto py-4 sm:px-10 lg:px-5">
 					<HistoricItem></HistoricItem>
-          </div>
+          </div> */}
+
+				<DataHistory/>
 				</main>
                 </div>
 </div>

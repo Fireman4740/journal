@@ -1,15 +1,9 @@
 import React from "react";
 import Chart from "../Components/DynamicChart";
-import {gethistory} from "../tools/getData";
+import DataHistory from "../tools/dataHistory";
 
 const Home = () => {
-	let ordre ;
-	// const data = getdataFromBinnace(ordre);
-	const afficher = () => {
-		const data = gethistory("BTCUSDT","REALIZED_PNL");
-		console.log(data);
-	}
-	// console.log(data +"data");
+
 	return (
 		<div>
 			<header className="bg-white shadow">
@@ -24,7 +18,8 @@ const Home = () => {
 					<Chart/>
 
 				</div>
-				<button className="btn btn-primary" onClick={afficher()}> api</button>
+				<button className="btn btn-primary" > api</button>
+				
 			</main>
 		</div>
 	);
